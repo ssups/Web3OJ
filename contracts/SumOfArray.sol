@@ -1,29 +1,34 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 interface ISumOfArray {
-    function sum(uint[] memory _a) external pure returns (uint);
+    function sum(uint[] calldata _a) external pure returns (uint);
+    // function sum(uint[] memory _a) external pure returns (uint);
 }
 
 contract SumOfArray is ISumOfArray {
-    // function sum(uint[] memory _a) external pure returns (uint){
-    //     return 48660;
-    // }
-    function sum(uint[] calldata _a) external pure returns (uint _sum) {
+    function sum(uint[] calldata) external pure returns (uint _sum) {
         // a.length == 100
-        assembly {
-            for {
-                let each := 68 // _a.offset
-            } lt(each, 3268) { // 68 + (100 * 32)
-                each := add(each, 32)
-            } {
-                _sum := add(_sum, calldataload(each))
+            assembly {
+                //   68 -> _a.offset   3268 -> 68 + (100 * 32)
+                for {let offset := 68} lt(offset, 3268) {offset := add(offset, 32)}{
+                    _sum := add(_sum, calldataload(offset))
+                }
             }
-        }
     }
+    
+    // function sum(uint[] calldata _a) external pure returns (uint _sum) {
+    //     unchecked {
+    //         uint len = _a.length;
+    //         for (uint i = 0; i < len; i++) {
+    //             _sum += _a[i];
+    //         }
+    //     }
+    // }
+    
     // function sum(uint[] calldata _a) external pure returns (uint _sum) {
     //     assembly {
     //             let len := _a.length
-    //             let end := add(_a.offset, mul(_a.offset, len)) // _a.length == 100 -> mul(100, 0x20)
+    //             let end := add(_a.offset, mul(len, 0x20)) // _a.length == 100 -> mul(100, 0x20)
     //         for {
     //             let each := _a.offset
     //         } lt(each, end) {
@@ -167,3 +172,4 @@ contract SumOfArray is ISumOfArray {
     //     }
     // }
 }
+

@@ -8,7 +8,12 @@ const config: HardhatUserConfig = {
   networks: {
     mumbai: {
       url: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.MUMBAI_API}`,
-      accounts: [process.env.PK || ""],
+      accounts: [process.env.PK_MUMBAI || ""],
+    },
+    baobab: {
+      url: "https://public-en-baobab.klaytn.net",
+      accounts: [process.env.PK_BAOBAB || ""],
+      gasPrice: 25 * 10 ** 9,
     },
   },
 };
