@@ -17,10 +17,7 @@ async function main() {
   await destroyTx.wait();
   console.log(await ethers.provider.getBalance(INSTACE_CA));
 
-  //   const tx = await signer.sendTransaction({ to: INSTACE_CA, value: 10 });
-  //   await tx.wait();
-
-  //   console.log("nonce: ", tx.nonce.toString());
+  console.log("nonce: ", destroyTx.nonce.toString());
 }
 
 // We recommend this pattern to be able to use async/await everywhere

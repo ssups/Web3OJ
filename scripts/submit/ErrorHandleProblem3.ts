@@ -3,15 +3,13 @@ import { ethers } from "hardhat";
 const INSTACE_CA = "0x36ca5cE76A75aA698222967F9c943CCf5755AAB2";
 
 async function main() {
-  const sig = ethers.keccak256(ethers.toUtf8Bytes("ErrorData(uint256,string)"));
-  console.log(sig.slice(0, 10));
-
-  const Problem = await ethers.getContractFactory("Problem");
-  const problem = await Problem.deploy();
-  await problem.waitForDeployment();
-  console.log(await problem.getAddress());
-
   const [signer] = await ethers.getSigners();
+
+  // for test
+  // const Problem = await ethers.getContractFactory("Problem");
+  // const problem = await Problem.deploy();
+  // await problem.waitForDeployment();
+  // console.log(await problem.getAddress());
 
   // deploy
   const factory = await ethers.getContractFactory("ErrorHandleProblem3");
