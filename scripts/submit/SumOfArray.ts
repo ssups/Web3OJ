@@ -1,8 +1,13 @@
 import { ethers } from "hardhat";
 
-const INSTACE_CA = "0x2e4453A6F2495e84dF25D66ebc90e49275bC003b";
+const INSTACE_CA = "0x20026be9Dd08EB7621A3a98d7C96D94E04B60e81";
 
 async function main() {
+  // for (let i = 0; i < 100; i++) {
+  //   console.log(`calldataload(${68 + i * 32})),`);
+  // }
+  // return;
+
   const [signer] = await ethers.getSigners();
 
   // deploy

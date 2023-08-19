@@ -6,13 +6,123 @@ interface ISumOfArray {
 }
 
 contract SumOfArray is ISumOfArray {
+    // function sum(uint[] calldata) external pure returns (uint _sum) {
+    //     // a.length == 100
+    //         assembly { 
+    //             for {
+    //             _sum := calldataload(68)
+    //             let offset := 100 // 100 -> _a.offset(68) + 32  
+    //             } lt(offset, 3268) { // 3268 -> 68 + (100 * 32)
+    //                 offset := add(offset, 32)
+    //             }{
+    //                 _sum := add(_sum, calldataload(offset))
+    //             }
+    //         }
+    // }
+
     function sum(uint[] calldata) external pure returns (uint _sum) {
-        // a.length == 100
             assembly {
-                //   68 -> _a.offset   3268 -> 68 + (100 * 32)
-                for {let offset := 68} lt(offset, 3268) {offset := add(offset, 32)}{
-                    _sum := add(_sum, calldataload(offset))
-                }
+                _sum := add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(
+                calldataload(68), 
+                calldataload(100)),
+                calldataload(132)),
+                calldataload(164)),
+                calldataload(196)),
+                calldataload(228)),
+                calldataload(260)),
+                calldataload(292)),
+                calldataload(324)),
+                calldataload(356)),
+                calldataload(388)),
+                calldataload(420)),
+                calldataload(452)),
+                calldataload(484)),
+                calldataload(516)),
+                calldataload(548)),
+                calldataload(580)),
+                calldataload(612)),
+                calldataload(644)),
+                calldataload(676)),
+                calldataload(708)),
+                calldataload(740)),
+                calldataload(772)),
+                calldataload(804)),
+                calldataload(836)),
+                calldataload(868)),
+                calldataload(900)),
+                calldataload(932)),
+                calldataload(964)),
+                calldataload(996)),
+                calldataload(1028)),
+                calldataload(1060)),
+                calldataload(1092)),
+                calldataload(1124)),
+                calldataload(1156)),
+                calldataload(1188)),
+                calldataload(1220)),
+                calldataload(1252)),
+                calldataload(1284)),
+                calldataload(1316)),
+                calldataload(1348)),
+                calldataload(1380)),
+                calldataload(1412)),
+                calldataload(1444)),
+                calldataload(1476)),
+                calldataload(1508)),
+                calldataload(1540)),
+                calldataload(1572)),
+                calldataload(1604)),
+                calldataload(1636)),
+                calldataload(1668)),
+                calldataload(1700)),
+                calldataload(1732)),
+                calldataload(1764)),
+                calldataload(1796)),
+                calldataload(1828)),
+                calldataload(1860)),
+                calldataload(1892)),
+                calldataload(1924)),
+                calldataload(1956)),
+                calldataload(1988)),
+                calldataload(2020)),
+                calldataload(2052)),
+                calldataload(2084)),
+                calldataload(2116)),
+                calldataload(2148)),
+                calldataload(2180)),
+                calldataload(2212)),
+                calldataload(2244)),
+                calldataload(2276)),
+                calldataload(2308)),
+                calldataload(2340)),
+                calldataload(2372)),
+                calldataload(2404)),
+                calldataload(2436)),
+                calldataload(2468)),
+                calldataload(2500)),
+                calldataload(2532)),
+                calldataload(2564)),
+                calldataload(2596)),
+                calldataload(2628)),
+                calldataload(2660)),
+                calldataload(2692)),
+                calldataload(2724)),
+                calldataload(2756)),
+                calldataload(2788)),
+                calldataload(2820)),
+                calldataload(2852)),
+                calldataload(2884)),
+                calldataload(2916)),
+                calldataload(2948)),
+                calldataload(2980)),
+                calldataload(3012)),
+                calldataload(3044)),
+                calldataload(3076)),
+                calldataload(3108)),
+                calldataload(3140)),
+                calldataload(3172)),
+                calldataload(3204)),
+                calldataload(3236))
             }
     }
     
@@ -72,103 +182,6 @@ contract SumOfArray is ISumOfArray {
     //         } {
     //             _sum := add(_sum, mload(each))
     //         }
-    //     }
-    // }
-    // function sum(uint[] memory _a) external pure returns (uint _sum) {
-    //     _sum =
-    //         _a[0] +
-    //         _a[10] +
-    //         _a[11] +
-    //         _a[12] +
-    //         _a[13] +
-    //         _a[14] +
-    //         _a[15] +
-    //         _a[16] +
-    //         _a[17] +
-    //         _a[18] +
-    //         _a[19] +
-    //         _a[20] +
-    //         _a[21] +
-    //         _a[22] +
-    //         _a[23] +
-    //         _a[24] +
-    //         _a[25] +
-    //         _a[26] +
-    //         _a[27] +
-    //         _a[28] +
-    //         _a[29] +
-    //         _a[30] +
-    //         _a[31] +
-    //         _a[32] +
-    //         _a[33] +
-    //         _a[34] +
-    //         _a[35] +
-    //         _a[36] +
-    //         _a[37] +
-    //         _a[38] +
-    //         _a[39] +
-    //         _a[40] +
-    //         _a[41] +
-    //         _a[42] +
-    //         _a[43] +
-    //         _a[44] +
-    //         _a[45] +
-    //         _a[46] +
-    //         _a[47] +
-    //         _a[48] +
-    //         _a[49] +
-    //         _a[50];
-    //     {
-    //         _sum +
-    //             _a[51] +
-    //             _a[52] +
-    //             _a[53] +
-    //             _a[54] +
-    //             _a[55] +
-    //             _a[56] +
-    //             _a[57] +
-    //             _a[58] +
-    //             _a[59] +
-    //             _a[60] +
-    //             _a[61] +
-    //             _a[62] +
-    //             _a[63] +
-    //             _a[64] +
-    //             _a[65] +
-    //             _a[66] +
-    //             _a[67] +
-    //             _a[68] +
-    //             _a[69] +
-    //             _a[70] +
-    //             _a[71] +
-    //             _a[72] +
-    //             _a[73] +
-    //             _a[74] +
-    //             _a[75] +
-    //             _a[76] +
-    //             _a[77] +
-    //             _a[78] +
-    //             _a[79] +
-    //             _a[80] +
-    //             _a[81] +
-    //             _a[82] +
-    //             _a[83] +
-    //             _a[84] +
-    //             _a[85] +
-    //             _a[86] +
-    //             _a[87] +
-    //             _a[88] +
-    //             _a[89] +
-    //             _a[90] +
-    //             _a[91] +
-    //             _a[92] +
-    //             _a[93] +
-    //             _a[94] +
-    //             _a[95] +
-    //             _a[96] +
-    //             _a[97] +
-    //             _a[98] +
-    //             _a[99];
     //     }
     // }
 }
